@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		563B937A21970453008DCEE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B937921970453008DCEE8 /* AppDelegate.swift */; };
-		563B937C21970453008DCEE8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B937B21970453008DCEE8 /* ViewController.swift */; };
+		563B937C21970453008DCEE8 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B937B21970453008DCEE8 /* HomeController.swift */; };
 		563B937F21970453008DCEE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 563B937D21970453008DCEE8 /* Main.storyboard */; };
 		563B938121970454008DCEE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 563B938021970454008DCEE8 /* Assets.xcassets */; };
 		563B938421970454008DCEE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 563B938221970454008DCEE8 /* LaunchScreen.storyboard */; };
+		563B938C21970AEA008DCEE8 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B938B21970AEA008DCEE8 /* MenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		563B937621970453008DCEE8 /* SliderMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SliderMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		563B937921970453008DCEE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		563B937B21970453008DCEE8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		563B937B21970453008DCEE8 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		563B937E21970453008DCEE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		563B938021970454008DCEE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		563B938321970454008DCEE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		563B938521970454008DCEE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		563B938B21970AEA008DCEE8 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,23 @@
 		563B937821970453008DCEE8 /* SliderMenu */ = {
 			isa = PBXGroup;
 			children = (
+				563B938D21970B03008DCEE8 /* Controllers */,
 				563B937921970453008DCEE8 /* AppDelegate.swift */,
-				563B937B21970453008DCEE8 /* ViewController.swift */,
 				563B937D21970453008DCEE8 /* Main.storyboard */,
 				563B938021970454008DCEE8 /* Assets.xcassets */,
 				563B938221970454008DCEE8 /* LaunchScreen.storyboard */,
 				563B938521970454008DCEE8 /* Info.plist */,
 			);
 			path = SliderMenu;
+			sourceTree = "<group>";
+		};
+		563B938D21970B03008DCEE8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				563B937B21970453008DCEE8 /* HomeController.swift */,
+				563B938B21970AEA008DCEE8 /* MenuController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +146,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				563B937C21970453008DCEE8 /* ViewController.swift in Sources */,
+				563B937C21970453008DCEE8 /* HomeController.swift in Sources */,
+				563B938C21970AEA008DCEE8 /* MenuController.swift in Sources */,
 				563B937A21970453008DCEE8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +295,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XDGVKMUQS5;
 				INFOPLIST_FILE = SliderMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XDGVKMUQS5;
 				INFOPLIST_FILE = SliderMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
