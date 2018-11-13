@@ -102,7 +102,7 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate{
 //    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 //        return true
 //    }
-//    
+//
 //    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 //        menuController.view.frame = CGRect(x: 0, y: 0, width: 200, height: 500)
 //    }
