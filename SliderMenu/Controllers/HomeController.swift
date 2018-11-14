@@ -21,7 +21,7 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate{
         tableView.backgroundColor = .lightGray
         setupNavigationItems()
         setupMenuController()
-        setupPanGesture()
+//        setupPanGesture()
         
         setupDarkCoverView()
 
