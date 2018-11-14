@@ -30,15 +30,16 @@ class BaseSlidingController: UIViewController {
         view.backgroundColor = .yellow
         
         setupViews()
+        setupNavigationItems()
+
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(panGesture)
     }
     
     @objc fileprivate func handlePan(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
-
-        var  x = translation.x
         // limits it's width so it doesn't go over the the view width
+        var  x = translation.x
         x = min(menuWidth, x)
         x = max(0, x)
         
@@ -53,24 +54,35 @@ class BaseSlidingController: UIViewController {
     
     fileprivate func handleEnded(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
+        let velocity = gesture.velocity(in: view)
         
-        if translation.x < menuWidth / 2 {
-            redViewLeadingConstraint.constant = 0
-            isMenuOpened = false
+        if isMenuOpened {
+            if abs(velocity.x) > velocityOpenThreshold {
+                handleHide()
+                return
+            }
+            if abs(translation.x) < menuWidth / 2 {
+                handleOpen()
+            } else {
+                handleHide()
+            }
         } else {
-            redViewLeadingConstraint.constant = menuWidth
-            isMenuOpened = true
+            if abs(velocity.x) > velocityOpenThreshold {
+                handleOpen()
+                return
+            }
+            
+            if translation.x < menuWidth / 2 {
+                handleHide()
+            } else {
+                handleOpen()
+            }
         }
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            
-            self.view.layoutIfNeeded()
-            
-        }, completion: nil)
     }
-    
+
     var redViewLeadingConstraint: NSLayoutConstraint!
     fileprivate let menuWidth: CGFloat = 300
+    fileprivate let velocityOpenThreshold: CGFloat = 500
     fileprivate var isMenuOpened = false
     
     fileprivate func setupViews() {
@@ -91,8 +103,33 @@ class BaseSlidingController: UIViewController {
         
         self.redViewLeadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
         redViewLeadingConstraint.isActive = true
-        
         setupViewControllers()
+    }
+    
+    fileprivate func setupNavigationItems() {
+        navigationItem.title = "BaseSliderMenu"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Open", style: .done, target: self, action: #selector(handleOpen))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Hide", style: .done, target: self, action: #selector(handleHide))
+    }
+
+    fileprivate func performAnimation() {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+    }
+    
+    @objc fileprivate func handleOpen() {
+        isMenuOpened = true
+        redViewLeadingConstraint.constant = menuWidth
+        performAnimation()
+    }
+    
+    @objc fileprivate func handleHide() {
+        isMenuOpened = false
+        redViewLeadingConstraint.constant = 0
+        self.performAnimation()
     }
     
     fileprivate func setupViewControllers() {
