@@ -23,6 +23,14 @@ class BaseSlidingController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    let darkCoverView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        view.alpha = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +38,7 @@ class BaseSlidingController: UIViewController {
         view.backgroundColor = .yellow
         
         setupViews()
-        setupNavigationItems()
+//        setupNavigationItems()
 
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(panGesture)
@@ -46,6 +54,7 @@ class BaseSlidingController: UIViewController {
         x = isMenuOpened ? x + menuWidth : x
         
         redViewLeadingConstraint.constant = x
+        darkCoverView.alpha = x / menuWidth
         
         if gesture.state == .ended {
             handleEnded(gesture: gesture)
@@ -79,6 +88,28 @@ class BaseSlidingController: UIViewController {
             }
         }
     }
+    
+    fileprivate func performAnimation() {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+            self.darkCoverView.alpha = self.isMenuOpened ? 1 : 0
+        }, completion: nil)
+        
+    }
+    
+    @objc fileprivate func handleOpen() {
+        isMenuOpened = true
+        redViewLeadingConstraint.constant = menuWidth
+        performAnimation()
+    }
+    
+    @objc fileprivate func handleHide() {
+        isMenuOpened = false
+        redViewLeadingConstraint.constant = 0
+        self.performAnimation()
+    }
+
 
     var redViewLeadingConstraint: NSLayoutConstraint!
     fileprivate let menuWidth: CGFloat = 300
@@ -111,26 +142,6 @@ class BaseSlidingController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Open", style: .done, target: self, action: #selector(handleOpen))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Hide", style: .done, target: self, action: #selector(handleHide))
     }
-
-    fileprivate func performAnimation() {
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        
-    }
-    
-    @objc fileprivate func handleOpen() {
-        isMenuOpened = true
-        redViewLeadingConstraint.constant = menuWidth
-        performAnimation()
-    }
-    
-    @objc fileprivate func handleHide() {
-        isMenuOpened = false
-        redViewLeadingConstraint.constant = 0
-        self.performAnimation()
-    }
     
     fileprivate func setupViewControllers() {
         let homeController = HomeController()
@@ -142,6 +153,7 @@ class BaseSlidingController: UIViewController {
         menuView.translatesAutoresizingMaskIntoConstraints = false
         
         redView.addSubview(homeView)
+        redView.addSubview(darkCoverView)
         blueVIew.addSubview(menuView)
         
         NSLayoutConstraint.activate([
@@ -153,7 +165,12 @@ class BaseSlidingController: UIViewController {
                 menuView.topAnchor.constraint(equalTo: blueVIew.topAnchor),
                 menuView.leadingAnchor.constraint(equalTo: blueVIew.leadingAnchor),
                 menuView.bottomAnchor.constraint(equalTo: blueVIew.bottomAnchor),
-                menuView.trailingAnchor.constraint(equalTo: blueVIew.trailingAnchor)
+                menuView.trailingAnchor.constraint(equalTo: blueVIew.trailingAnchor),
+                
+                darkCoverView.topAnchor.constraint(equalTo: redView.topAnchor),
+                darkCoverView.leadingAnchor.constraint(equalTo: redView.leadingAnchor),
+                darkCoverView.bottomAnchor.constraint(equalTo: redView.bottomAnchor),
+                darkCoverView.trailingAnchor.constraint(equalTo: redView.trailingAnchor)
             ])
         
         addChild(homeController)
