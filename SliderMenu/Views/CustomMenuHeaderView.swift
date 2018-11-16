@@ -39,7 +39,7 @@ class CustomMenuHeaderView: UIView {
         statsLabel.font = UIFont.systemFont(ofSize: 14)
         let attributedText = NSMutableAttributedString(string: "42 ", attributes: [.font: UIFont.systemFont(ofSize: 18, weight: .medium)])
         attributedText.append(NSAttributedString(string: "Following  ", attributes: [.foregroundColor: UIColor.black]))
-        attributedText.append(NSAttributedString(string: "7091 ", attributes: [.font: UIFont.systemFont(ofSize: 17, weight: .medium)]))
+        attributedText.append(NSAttributedString(string: "7091  ", attributes: [.font: UIFont.systemFont(ofSize: 17, weight: .medium)]))
         attributedText.append(NSAttributedString(string: "Followers", attributes: [.foregroundColor: UIColor.black]))
         statsLabel.attributedText = attributedText
     }
@@ -61,7 +61,6 @@ class CustomMenuHeaderView: UIView {
         
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        //        stackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
