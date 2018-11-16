@@ -22,7 +22,6 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate{
         setupNavigationItems()
         setupMenuController()
 //        setupPanGesture()
-        
         setupDarkCoverView()
 
     }
@@ -168,6 +167,5 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate{
         return cell
         
     }
-    
 }
 

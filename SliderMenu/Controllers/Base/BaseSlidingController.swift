@@ -38,7 +38,7 @@ class BaseSlidingController: UIViewController {
         view.backgroundColor = .yellow
         
         setupViews()
-//        setupNavigationItems()
+        setupNavigationItems()
 
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(panGesture)

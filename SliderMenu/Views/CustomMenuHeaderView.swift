@@ -10,25 +10,50 @@ import UIKit
 
 class CustomMenuHeaderView: UIView {
 
-    
+    let nameLabel = UILabel()
+    let statsLabel = UILabel()
+    let userNameLabel = UILabel()
+    let profileImageView = ProfileImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .white
-        // custom components
-        
-        let nameLabel = UILabel()
+        setupComponenProperties()
+        setupStackView()
+    }
+    
+    fileprivate func setupComponenProperties() {
         nameLabel.text = "Victor Chang"
         nameLabel.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
-        let userNameLabel = UILabel()
         userNameLabel.text = "@vectorChange"
-        
-        let statsLabel = UILabel()
         statsLabel.text = "42 following 242 followers"
+        profileImageView.image = UIImage(named: "victor_memoji")
+        profileImageView.contentMode = .scaleAspectFit
         
+        setupAttributedText()
+        
+    }
+    
+    fileprivate func setupAttributedText() {
+        statsLabel.font = UIFont.systemFont(ofSize: 14)
+        let attributedText = NSMutableAttributedString(string: "42 ", attributes: [.font: UIFont.systemFont(ofSize: 18, weight: .medium)])
+        attributedText.append(NSAttributedString(string: "Following  ", attributes: [.foregroundColor: UIColor.black]))
+        attributedText.append(NSAttributedString(string: "7091 ", attributes: [.font: UIFont.systemFont(ofSize: 17, weight: .medium)]))
+        attributedText.append(NSAttributedString(string: "Followers", attributes: [.foregroundColor: UIColor.black]))
+        statsLabel.attributedText = attributedText
+    }
+    
+    fileprivate func setupStackView() {
+        let rightSpacerView = UIView()
         let arrangeSubviews = [
-           UIView(), nameLabel, userNameLabel, SpacerView(space: 16), statsLabel ]
+            UIView(),
+            UIStackView(arrangedSubviews: [profileImageView, rightSpacerView]),
+            nameLabel,
+            userNameLabel,
+            SpacerView(space: 16),
+            statsLabel
+        ]
         
         let stackView = UIStackView(arrangedSubviews: arrangeSubviews)
         stackView.axis = .vertical
@@ -36,7 +61,7 @@ class CustomMenuHeaderView: UIView {
         
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        //        stackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
@@ -45,8 +70,6 @@ class CustomMenuHeaderView: UIView {
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
     }
-    
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
