@@ -47,7 +47,7 @@ class CustomMenuHeaderView: UIView {
     fileprivate func setupStackView() {
         let rightSpacerView = UIView()
         let arrangeSubviews = [
-            UIView(),
+//            UIView(),
             UIStackView(arrangedSubviews: [profileImageView, rightSpacerView]),
             nameLabel,
             userNameLabel,
@@ -67,7 +67,7 @@ class CustomMenuHeaderView: UIView {
         stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
+        stackView.layoutMargins = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

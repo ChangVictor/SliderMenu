@@ -98,16 +98,41 @@ class BaseSlidingController: UIViewController {
         
     }
     
-    @objc fileprivate func handleOpen() {
+    @objc func handleOpen() {
         isMenuOpened = true
         redViewLeadingConstraint.constant = menuWidth
         performAnimation()
     }
     
-    @objc fileprivate func handleHide() {
+    @objc func handleHide() {
         isMenuOpened = false
         redViewLeadingConstraint.constant = 0
         self.performAnimation()
+    }
+    
+    func didSelectMenuItem(indexPath: IndexPath) {
+//        print("Selected menu item: ", indexPath.row)
+        
+        switch indexPath.row {
+        case 0:
+            print("Show Home Screen")
+        case 1:
+            print("Show Lists Screen")
+            let listsController = ListsController()
+            redView.addSubview(listsController.view)
+            
+        case 2:
+            print("Show Bookmarks Screen")
+            let bookmarksController = UIViewController()
+            bookmarksController.view.backgroundColor = .purple
+            redView.addSubview(bookmarksController.view)
+        default:
+            print("Show Moments Screen")
+        }
+        
+        redView.bringSubviewToFront(darkCoverView)
+        
+        handleHide()
     }
 
 
