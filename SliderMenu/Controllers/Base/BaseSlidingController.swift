@@ -10,9 +10,8 @@ import UIKit
 
 class RightContainerView: UIView {}
 class MenuContainerView: UIView {}
-class DarkCoverView: UIView {
-    
-}
+class DarkCoverView: UIView {}
+
 class BaseSlidingController: UIViewController {
     
     let redView: RightContainerView = {
@@ -46,6 +45,13 @@ class BaseSlidingController: UIViewController {
 
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(panGesture)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapDismiss))
+        darkCoverView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc fileprivate func handleTapDismiss() {
+        handleHide()
     }
     
     @objc fileprivate func handlePan(gesture: UIPanGestureRecognizer) {
@@ -58,6 +64,7 @@ class BaseSlidingController: UIViewController {
         x = isMenuOpened ? x + menuWidth : x
         
         redViewLeadingConstraint.constant = x
+        redViewTrailingConstraint.constant = x
         darkCoverView.alpha = x / menuWidth
         
         if gesture.state == .ended {
@@ -105,12 +112,14 @@ class BaseSlidingController: UIViewController {
     @objc func handleOpen() {
         isMenuOpened = true
         redViewLeadingConstraint.constant = menuWidth
+        redViewTrailingConstraint.constant = menuWidth
         performAnimation()
     }
     
     @objc func handleHide() {
         isMenuOpened = false
         redViewLeadingConstraint.constant = 0
+        redViewTrailingConstraint.constant = 0
         self.performAnimation()
     }
     
@@ -153,6 +162,7 @@ class BaseSlidingController: UIViewController {
     }
 
     var redViewLeadingConstraint: NSLayoutConstraint!
+    var redViewTrailingConstraint: NSLayoutConstraint!
     fileprivate let menuWidth: CGFloat = 300
     fileprivate let velocityOpenThreshold: CGFloat = 500
     fileprivate var isMenuOpened = false
@@ -164,17 +174,22 @@ class BaseSlidingController: UIViewController {
         NSLayoutConstraint.activate([
             redView.topAnchor.constraint(equalTo: view.topAnchor),
             redView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            redView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             blueVIew.topAnchor.constraint(equalTo: view.topAnchor),
-            blueVIew.trailingAnchor.constraint(equalTo: redView.safeAreaLayoutGuide.leadingAnchor),
+            blueVIew.trailingAnchor.constraint(equalTo: redView.leadingAnchor),
             blueVIew.widthAnchor.constraint(equalToConstant: menuWidth),
             blueVIew.bottomAnchor.constraint(equalTo: redView.bottomAnchor)
             ])
         
         
-        self.redViewLeadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
+        redViewLeadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
         redViewLeadingConstraint.isActive = true
+        
+        redView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        redViewTrailingConstraint = redView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        redViewTrailingConstraint.isActive = true
+
+        
         setupViewControllers()
     }
     
