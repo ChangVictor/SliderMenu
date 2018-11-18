@@ -17,14 +17,13 @@ class BaseSlidingController: UIViewController {
     
     let redView: RightContainerView = {
         let view = RightContainerView()
-        view.backgroundColor = .red
+        
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     let blueVIew: MenuContainerView = {
         let view = MenuContainerView()
-        view.backgroundColor = .blue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -40,7 +39,7 @@ class BaseSlidingController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
         
         setupViews()
         setupNavigationItems()
@@ -118,35 +117,39 @@ class BaseSlidingController: UIViewController {
     func didSelectMenuItem(indexPath: IndexPath) {
         
         performRightViewCleanup()
+        handleHide()
         
         switch indexPath.row {
         case 0:
-            print("Show Home Screen")
+            rightViewController = UINavigationController(rootViewController: HomeController())
+            
         case 1:
-            let listsController = ListsController()
-            redView.addSubview(listsController.view)
-            addChild(listsController)
-            rightViewController = listsController
+            rightViewController = UINavigationController(rootViewController: ListsController() )
+            
         case 2:
-            let bookmarksController = BookmarksController()
-
-            redView.addSubview(bookmarksController.view)
-            addChild(bookmarksController)
-            rightViewController = bookmarksController
+            rightViewController = BookmarksController()
         default:
-            print("Show Moments Screen")
+            let tabBarController = UITabBarController()
+            let momentsController = UIViewController()
+            momentsController.navigationItem.title = "Moments"
+            momentsController.view.backgroundColor = .orange
+            let navController = UINavigationController(rootViewController: momentsController)
+            navController.tabBarItem.title = "Moments"
+            tabBarController.viewControllers = [navController]
+            rightViewController = tabBarController
         }
         
-        redView.bringSubviewToFront(darkCoverView)
+        redView.addSubview(rightViewController.view)
+        addChild(rightViewController)
         
-        handleHide()
+        redView.bringSubviewToFront(darkCoverView)
     }
 
-    var rightViewController: UIViewController?
+    var rightViewController: UIViewController = UINavigationController(rootViewController: HomeController())
     
     fileprivate func performRightViewCleanup() {
-        rightViewController?.view.removeFromSuperview()
-        rightViewController?.removeFromParent()
+        rightViewController.view.removeFromSuperview()
+        rightViewController.removeFromParent()
     }
 
     var redViewLeadingConstraint: NSLayoutConstraint!
@@ -183,9 +186,8 @@ class BaseSlidingController: UIViewController {
     
     fileprivate func setupViewControllers() {
         let menuController = MenuController()
-        rightViewController = HomeController()
         guard let menuView = menuController.view else { return }
-        guard let homeView = rightViewController!.view else { return }
+        guard let homeView = rightViewController.view else { return }
         homeView.translatesAutoresizingMaskIntoConstraints = false
         menuView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -210,9 +212,8 @@ class BaseSlidingController: UIViewController {
                 darkCoverView.trailingAnchor.constraint(equalTo: redView.trailingAnchor)
             ])
         
-        addChild(rightViewController!)
+        addChild(rightViewController)
         addChild(menuController)
     }
-
 
 }
