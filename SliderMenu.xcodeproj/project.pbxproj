@@ -14,6 +14,7 @@
 		563B938121970454008DCEE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 563B938021970454008DCEE8 /* Assets.xcassets */; };
 		563B938421970454008DCEE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 563B938221970454008DCEE8 /* LaunchScreen.storyboard */; };
 		563B938C21970AEA008DCEE8 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B938B21970AEA008DCEE8 /* MenuController.swift */; };
+		5650D0CF21A19DDA00309CA0 /* BookmarksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5650D0CE21A19DDA00309CA0 /* BookmarksController.swift */; };
 		56532B26219DED340053AD1F /* CustomMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56532B25219DED340053AD1F /* CustomMenuHeaderView.swift */; };
 		56532B28219DFB0B0053AD1F /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56532B27219DFB0B0053AD1F /* SpacerView.swift */; };
 		566C5B9F219F67C400B78D3C /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566C5B9E219F67C400B78D3C /* ProfileImageView.swift */; };
@@ -31,6 +32,7 @@
 		563B938321970454008DCEE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		563B938521970454008DCEE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		563B938B21970AEA008DCEE8 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		5650D0CE21A19DDA00309CA0 /* BookmarksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksController.swift; sourceTree = "<group>"; };
 		56532B25219DED340053AD1F /* CustomMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuHeaderView.swift; sourceTree = "<group>"; };
 		56532B27219DFB0B0053AD1F /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
 		566C5B9E219F67C400B78D3C /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				563B937B21970453008DCEE8 /* HomeController.swift */,
 				563B938B21970AEA008DCEE8 /* MenuController.swift */,
 				561297F221A04941001E6695 /* ListsController.swift */,
+				5650D0CE21A19DDA00309CA0 /* BookmarksController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				563B938C21970AEA008DCEE8 /* MenuController.swift in Sources */,
 				561297F321A04941001E6695 /* ListsController.swift in Sources */,
 				563B937A21970453008DCEE8 /* AppDelegate.swift in Sources */,
+				5650D0CF21A19DDA00309CA0 /* BookmarksController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
