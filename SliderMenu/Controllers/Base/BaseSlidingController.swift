@@ -155,7 +155,8 @@ class BaseSlidingController: UIViewController {
     }
 
     var rightViewController: UIViewController = UINavigationController(rootViewController: HomeController())
-    
+    let menuController = ChatroomsMenuController()
+
     fileprivate func performRightViewCleanup() {
         rightViewController.view.removeFromSuperview()
         rightViewController.removeFromParent()
@@ -200,7 +201,6 @@ class BaseSlidingController: UIViewController {
     }
     
     fileprivate func setupViewControllers() {
-        let menuController = MenuController()
         guard let menuView = menuController.view else { return }
         guard let homeView = rightViewController.view else { return }
         homeView.translatesAutoresizingMaskIntoConstraints = false
