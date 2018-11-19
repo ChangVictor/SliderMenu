@@ -44,7 +44,7 @@ extension ChatroomsMenuController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let cell = ChatroomMenuCell(style: .default, reuseIdentifier: nil)
         let text = chatroomGroups[indexPath.section][indexPath.row]
         cell.textLabel?.text = text
         cell.backgroundColor = .clear

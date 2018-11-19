@@ -21,6 +21,8 @@
 		566C5BA1219F7F2500B78D3C /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566C5BA0219F7F2500B78D3C /* MenuItemCell.swift */; };
 		5673CC15219B54C900BA571B /* BaseSlidingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5673CC14219B54C900BA571B /* BaseSlidingController.swift */; };
 		568D477421A30774000FB469 /* ChatroomsMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D477321A30774000FB469 /* ChatroomsMenuController.swift */; };
+		568D477621A313D3000FB469 /* ChatroomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D477521A313D3000FB469 /* ChatroomMenuCell.swift */; };
+		568D477821A315E2000FB469 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D477721A315E2000FB469 /* Extensions+UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		566C5BA0219F7F2500B78D3C /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		5673CC14219B54C900BA571B /* BaseSlidingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlidingController.swift; sourceTree = "<group>"; };
 		568D477321A30774000FB469 /* ChatroomsMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomsMenuController.swift; sourceTree = "<group>"; };
+		568D477521A313D3000FB469 /* ChatroomMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomMenuCell.swift; sourceTree = "<group>"; };
+		568D477721A315E2000FB469 /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 				56532B24219DED1B0053AD1F /* Views */,
 				563B938D21970B03008DCEE8 /* Controllers */,
 				563B937921970453008DCEE8 /* AppDelegate.swift */,
+				568D477721A315E2000FB469 /* Extensions+UIView.swift */,
 				563B937D21970453008DCEE8 /* Main.storyboard */,
 				563B938021970454008DCEE8 /* Assets.xcassets */,
 				563B938221970454008DCEE8 /* LaunchScreen.storyboard */,
@@ -103,6 +108,7 @@
 				56532B27219DFB0B0053AD1F /* SpacerView.swift */,
 				566C5B9E219F67C400B78D3C /* ProfileImageView.swift */,
 				566C5BA0219F7F2500B78D3C /* MenuItemCell.swift */,
+				568D477521A313D3000FB469 /* ChatroomMenuCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,7 +195,9 @@
 				5673CC15219B54C900BA571B /* BaseSlidingController.swift in Sources */,
 				566C5BA1219F7F2500B78D3C /* MenuItemCell.swift in Sources */,
 				566C5B9F219F67C400B78D3C /* ProfileImageView.swift in Sources */,
+				568D477621A313D3000FB469 /* ChatroomMenuCell.swift in Sources */,
 				563B937C21970453008DCEE8 /* HomeController.swift in Sources */,
+				568D477821A315E2000FB469 /* Extensions+UIView.swift in Sources */,
 				56532B28219DFB0B0053AD1F /* SpacerView.swift in Sources */,
 				568D477421A30774000FB469 /* ChatroomsMenuController.swift in Sources */,
 				56532B26219DED340053AD1F /* CustomMenuHeaderView.swift in Sources */,
