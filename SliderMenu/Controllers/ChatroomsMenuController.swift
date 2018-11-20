@@ -30,8 +30,22 @@ class ChatroomsMenuController: UITableViewController {
 
 extension ChatroomsMenuController {
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "UNREADS" : section == 1 ? "CHANNELS": "DIRECT MESSAGES"
+    fileprivate class  ChatroomCustomHeaderLabel: UILabel {
+        override func drawText(in rect: CGRect) {
+            super.drawText(in: rect.insetBy(dx: 16, dy: 0))
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let text = section == 0 ? "UNREADS" : section == 1 ? "CHANNELS": "DIRECT MESSAGES"
+        let label = ChatroomCustomHeaderLabel()
+        label.text = text
+        label.textColor = #colorLiteral(red: 0.4745098039, green: 0.4078431373, blue: 0.4666666667, alpha: 1)
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
