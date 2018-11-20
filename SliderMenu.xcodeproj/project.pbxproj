@@ -23,6 +23,7 @@
 		568D477421A30774000FB469 /* ChatroomsMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D477321A30774000FB469 /* ChatroomsMenuController.swift */; };
 		568D477621A313D3000FB469 /* ChatroomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D477521A313D3000FB469 /* ChatroomMenuCell.swift */; };
 		568D477821A315E2000FB469 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D477721A315E2000FB469 /* Extensions+UIView.swift */; };
+		56C670B721A4950A00CBB295 /* ChatroomMenuContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C670B621A4950A00CBB295 /* ChatroomMenuContainerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		568D477321A30774000FB469 /* ChatroomsMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomsMenuController.swift; sourceTree = "<group>"; };
 		568D477521A313D3000FB469 /* ChatroomMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomMenuCell.swift; sourceTree = "<group>"; };
 		568D477721A315E2000FB469 /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
+		56C670B621A4950A00CBB295 /* ChatroomMenuContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomMenuContainerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				561297F221A04941001E6695 /* ListsController.swift */,
 				5650D0CE21A19DDA00309CA0 /* BookmarksController.swift */,
 				568D477321A30774000FB469 /* ChatroomsMenuController.swift */,
+				56C670B621A4950A00CBB295 /* ChatroomMenuContainerController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				56532B26219DED340053AD1F /* CustomMenuHeaderView.swift in Sources */,
 				563B938C21970AEA008DCEE8 /* MenuController.swift in Sources */,
 				561297F321A04941001E6695 /* ListsController.swift in Sources */,
+				56C670B721A4950A00CBB295 /* ChatroomMenuContainerController.swift in Sources */,
 				563B937A21970453008DCEE8 /* AppDelegate.swift in Sources */,
 				5650D0CF21A19DDA00309CA0 /* BookmarksController.swift in Sources */,
 			);
